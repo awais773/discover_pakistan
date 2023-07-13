@@ -4,18 +4,47 @@
 
 <div class="container">
     <div class="container-fluid">
-
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Users</h1>
-
+        <h1 class="h3 mb-2 text-gray-800">Video</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DiscoverPakisatn DataTables</h6>
+                <a class="btn btn-primary" href="{{ url('/Videocreate') }}">Add Video</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        {{-- <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="dataTable_length"><label class="label-top">Show
+                                        <select name="dataTable_length" aria-controls="dataTable"
+                                            class="custom-select custom-select-sm form-control form-control-sm label-inner">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> entries</label></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search"
+                                            class="form-control form-control-sm" placeholder=""
+                                            aria-controls="dataTable"></label></div>
+                            </div>
+                        </div> --}}
                         <div class="row">
                             <div class="col-sm-12">
                                 <table class="table table-bordered dataTable" id="dataTable" width="100%"
@@ -29,10 +58,17 @@
                                                 style="width: 131.172px;">ID</th>
                                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1"
                                                 colspan="1" aria-label="Name: activate to sort column ascending"
-                                                style="width: 131.172px;">Name</th>
+                                                style="width: 131.172px;">Title</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Age: activate to sort column ascending"
+                                                style="width: 131.172px;">Video</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1"
+                                                aria-label="Start date: activate to sort column ascending"
+                                                style="width: 131.172px;">Shorts Video</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 131.172px;">Email</th>
+                                                style="width: 131.172px;">Category</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1"
                                                 aria-label="Start date: activate to sort column ascending"
@@ -42,17 +78,19 @@
 
                                     <tbody>
                                       
-                                        @foreach ($Users as $user )
+                                        @foreach ($Withdraw as $user )
                                         <tr class="even">
                                             <td>{{ $user->id }}</td>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{$user->email  }}</td>
+                                            <td>{{ $user->title }}</td>
+                                            <td>{{$user->video  }}</td>
+                                            <td>{{ $user->shorts_video }}</td>
+                                            <td>{{ $user->category }}</td>                                           
                                             <td style="display: flex">
                                                 {{-- <div style="  margin-right: 10px">    
-                                                <a class="btn btn-success" href="{{ url('/User',$user->id) }}"> <i class="fas fa-edit"></i></a>
+                                                <a class="btn btn-success" href="{{ url('/withdraws',$user->id) }}"> <i class="fas fa-edit"></i></a>
                                             </div> --}}
                                             <div style="  margin-left: 10px;">
-                                                <form method="post" action="{{url('/Users',$user->id)}}">
+                                                <form method="post" action="{{url('/Video',$user->id)}}">
                                                     @method('delete')
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger"><i

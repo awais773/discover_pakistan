@@ -8,8 +8,7 @@ use App\Mail\InvitationMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Api\Configration;
-use App\Models\Api\DailyBonus;
-use App\Models\Api\LeaderBoard;
+use App\Models\Withdraw;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -27,13 +26,13 @@ class EmailInvitationController extends Controller
     public function index()
     {
         
-        $LeaderBoard = LeaderBoard::all()->count();
+        $Withdraw = Withdraw::sum('amount');
         $user = User::all()->count();
-        $Configration = Configration::all()->count();
-        $DailyBonus = DailyBonus::all()->count();
+        $Trading = Withdraw::sum('amount');
+        $Deposit = Withdraw::sum('amount');
 
         
-        return view('admin.main.indexs',compact('LeaderBoard','user','Configration','DailyBonus'));
+        return view('admin.main.indexs',compact('Trading','user','Withdraw','Deposit'));
     }
 
     /**

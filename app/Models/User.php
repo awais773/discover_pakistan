@@ -31,8 +31,6 @@ class User extends Authenticatable
         'contact_number',
         'country',
         'user_type',
-
-
     ];
 
     /**

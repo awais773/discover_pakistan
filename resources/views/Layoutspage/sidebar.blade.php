@@ -29,7 +29,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Game Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Discover Pakisatn <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
@@ -56,52 +56,14 @@
                     <i class="bi bi-people"></i>
                     <span>Users</span></a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoCategori"
-                    aria-expanded="true" aria-controls="collapseTwoCategori">
-                    <i class="bi bi-menu-button-wide"></i>
-                    <span>Level Configration</span>
-                </a>
-                <div id="collapseTwoCategori" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Level Configration:</h6>
-                        <a class="collapse-item" href="{{ url('/addConfigration') }}">Add Level Configration</a>
-                        <a class="collapse-item" href="{{ url('/listConfigration') }}">List Level Configration </a>
-
-
-                    </div>
-                </div>
-            </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoDistribut"
-                    aria-expanded="true" aria-controls="collapseTwoDistribut">
-                    <i class="bi bi-distribute-horizontal"></i>
-                    <span>Daily Bonus</span>
-                </a>
-                <div id="collapseTwoDistribut" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Daily Bonus:</h6>
-                        <a class="collapse-item" href="{{ url('/dailyBouns') }}">Add Daily Bonus</a>
-                        <a class="collapse-item" href="{{ url('listDailyBouns') }}">List Daily Bonus </a>
-                    </div>
-                </div>
-            </li> --}}
-
             
-
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/leaderboardlist') }}">
+                <a class="nav-link" href="{{ url('/Video') }}">
                     <i class="bi bi-chat-left-dots"></i>
-                    <span>LeaderBoard </span></a>
+                    <span>Videos </span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('listDailyBouns') }}">
-                    <i class="bi bi-bug"></i>
-                    <span>Daily Bonus</span></a>
-            </li>
+
+
 
 
             <!-- Divider -->

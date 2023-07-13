@@ -19,8 +19,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                        Total LeaderBoard</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $LeaderBoard }}</div>
+                                        Total Deposit</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $Deposit }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="bi bi-cart3 fa-2x text-gray-500"></i>
@@ -54,11 +54,11 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Configration
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Balance
                                     </div>
                                     <div class="row no-gutters align-items-center">
                                         <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $Configration }}</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $Trading }}</div>
                                         </div>
                                        
                                     </div>
@@ -78,8 +78,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                        Daily Bonus </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $DailyBonus }}</div>
+                                        Total Withdraw </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $Withdraw }}</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="bi bi-question-diamond fa-2x text-gray-300"></i>

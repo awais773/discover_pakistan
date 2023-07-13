@@ -3,7 +3,7 @@
    <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Kosher  WIEN &copy; 2022</span>
+            <span>Coins &copy; 2023</span>
         </div>
     </div>
 </footer>

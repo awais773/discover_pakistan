@@ -25,7 +25,6 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('otp_verify')->default( 0);
             $table->dateTime('registered_at')->nullable();
             $table->rememberToken();
-            $table->string('contact_number')->nullable();
             $table->timestamps();
         });
     }

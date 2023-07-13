@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
-use App\Mail\OtpVerificationMail;
-use App\Models\Api\Product;
+use Validator;
 use App\Models\User;
+use App\Models\Api\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Mail\OtpVerificationMail;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class AuthenticateController extends Controller
@@ -29,7 +30,7 @@ class AuthenticateController extends Controller
             'password' => 'required',
             'email' => 'required',
         ];
-        $validator = \Validator::make($input, $validations);
+        $validator = Validator::make($input, $validations);
         if ($validator->fails()) {
             $this->message = formatErrors($validator->errors()->toArray());
         } else {
@@ -37,7 +38,7 @@ class AuthenticateController extends Controller
             $user = User::where('email', $email)->where('otp_verify', 1)->first();
             if (!empty($user)) {
                 $this->message = 'Password does not match';
-                if (\Hash::check($request->input('password'), $user->password)) {
+                if (Hash::check($request->input('password'), $user->password)) {
                     $user = User::find($user->id);
                     $token = $user->createToken('assessment')->accessToken;
                     $user = $user->toArray();
@@ -58,12 +59,11 @@ class AuthenticateController extends Controller
         $id = $request->user()->id;
         $obj = User::find($id);
         if ($obj) {
-
-            if ($image = $request->file('image')) {
+            if ($image = $request->file('avatar')) {
                 $destinationPath = 'profileImage/';
                 $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
                 $image->move($destinationPath, $profileImage);
-                $input['image'] = "$profileImage";
+                $input['avatar'] = "$profileImage";
                 $obj->avatar = $profileImage;
             }
             if (!empty($request->input('name'))) {
@@ -75,12 +75,7 @@ class AuthenticateController extends Controller
             if (!empty($request->input('password'))) {
                 $obj->password = Hash::make($request->input('password'));
             }
-            if (!empty($request->input('contact_number'))) {
-                $obj->contact_number = $request->input('contact_number');
-            }
-            if (!empty($request->input('country'))) {
-                $obj->country = $request->input('country');
-            }
+          
             if ($obj->save()) {
                 $this->data = $obj;
                 $this->success = True;
@@ -143,6 +138,76 @@ class AuthenticateController extends Controller
             }
             return response()->json(['success' => false, 'message' => 'Failed! something went wrong',]);
         }
+
+
+        public function logout()
+    {
+        // auth()->guard('api')->logout();
+        auth()->user()->token()->revoke();
+        return response()->json([
+            'Success' => true,
+            'message' => 'User successfully signed out'
+
+        ], 200);
+    }
+
+
+    public function otpVerification(Request $request)
+    {
+        $otp = $request->input('otp');
+        $email = $request->input('email');
+        
+        $this->success = false;
+        $this->message = 'Please enter a valid OTP number';
+        $this->data = [];
+        
+        // Check if OTP and email are provided
+        if (!empty($otp) && !empty($email)) {
+            // Find the user by matching 'otp_number' and 'email'
+            $user = User::where('otp_number', $otp)->where('email', $email)->first();
+            
+            if ($user) {
+                $user->otp_verify = 1;
+                $user->save();                
+                $token = $user->createToken('assessment')->accessToken;                
+                $userData = $user->toArray();
+                $this->data['token'] = 'Bearer ' . $token;
+                $this->data['user'] = $userData;                
+                $this->success = true;
+                $this->message = 'Verification successful';
+            }
+        }
+        
+        return response()->json([
+            'success' => $this->success,
+            'message' => $this->message,
+            'data' => $this->data
+        ]);
+    }
+
+
+    public function forgotPassword(Request $request)
+    {
+        $user = $request->email;
+        $checkEmail = User::where('email', $user)->first();
+        if ($checkEmail) {
+            $otp = rand(100000, 999999);
+            $checkEmail->otp_number = $otp;
+            $checkEmail->update();
+            Mail::to($request->email)->send(new OtpVerificationMail($otp));
+            $token = $checkEmail->createToken('assessment')->accessToken;
+            $this->$checkEmail['token'] = 'Bearer ' . $token;
+            return response()->json([
+                'success' => 'true', 'message' => 'Otp sent successfully. Please check your email!',
+                'data' => $data = ([
+                    'token' => $token
+                ])
+            ]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'this email is not exits']);
+        }
+    }
+
 
     
 }

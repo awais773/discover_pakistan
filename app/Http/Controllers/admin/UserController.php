@@ -25,13 +25,41 @@ class UserController extends Controller
         
         return view('admin.main.Users');
     }
+
+    
+    public function edit($id)
+    {
+        $user = User::find($id);
+        return view('admin.main.editUser',compact('user'));
+
+    }
+
+    // public function show()
+    // {
+    //     $user= User::latest()->get();
+    //     return view('admin.main.listConfigration', compact('user'));
+
+        
+    // }
     
 
-    public function show()
+    public function update(Request $request,$id)
     {
-        
+        $data = User::find($id);
+        $data->update($request->all());
+        // $probabilityData = $request->input('probability.data');
+        // $data->probability = $probabilityData;
+        // $data->save();
+        return redirect()->back()->with('message','balance been updated successfully.');
+    }
 
-    } 
+
+    public function destroy($id) 
+    {
+       $user = User::where('id', $id)->firstorfail()->delete();
+       return redirect()->back()->with('message',"Record deleted successfully");
+    }
+
 
 
 }

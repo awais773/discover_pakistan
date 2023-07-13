@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,41 +34,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Route::get('/dashboard', [App\Http\Controllers\admin\CategoryController::class, 'index']);
 Route::get('/leaderboardlist', [App\Http\Controllers\admin\LeaderBoardController::class, 'index']);
-Route::get('/Today', [App\Http\Controllers\admin\LeaderBoardController::class, 'search']);
-Route::get('/WeekFilter', [App\Http\Controllers\admin\LeaderBoardController::class, 'weekFilter']);
-Route::get('/MonthFilter', [App\Http\Controllers\admin\LeaderBoardController::class, 'MonthFilter']);
-
-
-Route::get('/addprduct', [App\Http\Controllers\admin\ProductController::class, 'create']);
-Route::post('/storePrduct', [App\Http\Controllers\admin\ProductController::class, 'store']);
-Route::delete('/destroyProduct/{id}', [App\Http\Controllers\admin\ProductController::class, 'destroyProduct']);
-Route::Resource('products', App\Http\Controllers\admin\ProductController::class);
-
-// Route::resource('products', ProductController::class);
-// Route::get('/prductlist', [App\Http\Controllers\admin\ProductController::class, 'show']);
-
-Route::get('/addConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'create']);
-Route::post('/storeConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'store']);
-Route::get('/listConfigration', [App\Http\Controllers\admin\ConfigrationController::class, 'show']);
-Route::delete('/destroyCategory/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyCategory']);
-Route::get('/dailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'dailyBounsCreate']);
-Route::post('/adddailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'adddailyBouns']);
-Route::get('/listDailyBouns', [App\Http\Controllers\admin\ConfigrationController::class, 'listDailyBouns']);
-Route::Resource('configrations', App\Http\Controllers\admin\ConfigrationController::class);
-Route::get('DailyBounsedit/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'DailyBounsedit']);
-Route::put('DailyBounsupdate/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'DailyBounsupdate']);
-Route::delete('/destroyDailyBouns/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'destroyDailyBouns']);
-Route::get('showAdvertising/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'showAdvertising']);
-Route::get('z/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'z']);
-Route::get('complete/{id}', [App\Http\Controllers\admin\ConfigrationController::class, 'complete']);
-
-
-
-Route::get('/xandy', [App\Http\Controllers\admin\ConfigrationController::class, 'xandy']);
 
 
 
 
-Route::get('/Users', [App\Http\Controllers\admin\UserController::class, 'index']);
+
+
+
+// Route::get('/Users', [App\Http\Controllers\admin\UserController::class, 'index']);
+Route::get('/User/{id}', [App\Http\Controllers\admin\UserController::class, 'edit']);
+Route::Resource('/Users', App\Http\Controllers\admin\UserController::class);
+
+
+Route::get('/Videocreate', [App\Http\Controllers\admin\VideoController::class, 'Videocreate']);
+Route::Resource('/Video', App\Http\Controllers\admin\VideoController::class);
+
+
 
 

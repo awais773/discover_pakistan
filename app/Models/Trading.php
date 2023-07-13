@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Models\Api;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LeaderBoard extends Model
+class Trading extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
+    protected $guarded = [] ;
 
     public function user() {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');  
     }
+
 }

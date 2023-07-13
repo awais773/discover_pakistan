@@ -16,15 +16,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register',[App\Http\Controllers\api\AuthController::class,'register']);
 Route::post('login',[App\Http\Controllers\api\AuthController::class,'login']);
+// Route::post('login',[App\Http\Controllers\api\AuthenticateController::class,'login']);
+Route::post('forgotPassword',[App\Http\Controllers\api\AuthenticateController::class,'forgotPassword']);
+Route::post('otpVerification',[App\Http\Controllers\api\AuthenticateController::class,'otpVerification']);
 
 
 // Route::post('/forgotPassword', [App\Http\Controllers\api\AuthenticateController::class, 'forgotPassword']);
-// Route::post('/updatePassword', [App\Http\Controllers\api\AuthenticateController::class, 'updatePassword']);
+Route::post('/updatePassword', [App\Http\Controllers\api\AuthenticateController::class, 'updatePassword']);
 
 Route::get('/Users', [App\Http\Controllers\api\AuthenticateController::class, 'index']);
 Route::get('/getUsers/{id}', [App\Http\Controllers\api\AuthenticateController::class, 'show']);
 
-
+Route::post('Video',[App\Http\Controllers\api\AuthController::class,'Video']);
+Route::post('VideosGet',[App\Http\Controllers\api\AuthController::class,'VideosGet']);
+Route::post('shortsGet',[App\Http\Controllers\api\AuthController::class,'shortsGet']);
+Route::get('Videos/{id}',[App\Http\Controllers\api\AuthController::class,'Videos']);
+Route::delete('videosDestroy/{id}',[App\Http\Controllers\api\AuthController::class,'videosDestroy']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -34,10 +41,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/update/profile', [App\Http\Controllers\api\AuthenticateController::class, 'updateProfile']);
-    Route::apiResource('leaderBoards', App\Http\Controllers\api\LeaderBoardController::class);
-    Route::get('/levelConfigration', [App\Http\Controllers\api\LeaderBoardController::class, 'levelConfigration']);
-    Route::get('/dailyMissions', [App\Http\Controllers\api\LeaderBoardController::class, 'dailyMissions']);
-    
+    Route::post('PasswordChanged',[App\Http\Controllers\api\AuthController::class,'PasswordChanged']);
 
 
 
