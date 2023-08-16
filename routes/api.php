@@ -37,6 +37,10 @@ Route::get('addsGet/{id}',[App\Http\Controllers\api\AuthController::class,'addSh
 Route::get('addsGet',[App\Http\Controllers\api\AuthController::class,'addsGet']);
 Route::post('contact',[App\Http\Controllers\api\AuthController::class,'Contact']);
 
+Route::get('homeVideo',[App\Http\Controllers\api\AuthController::class,'HomeVideo']);
+Route::get('allVideo',[App\Http\Controllers\api\AuthController::class,'allVideo']);
+
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

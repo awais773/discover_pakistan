@@ -203,6 +203,69 @@ class AuthController extends Controller
     }
 
 
+    public function allVideo(Request $request)
+    {
+        $category = $request->input('category');
+        $title = $request->input('title');
+    
+        $query = Videos::query();
+    
+        if (!is_null($category)) {
+            $query->where('category', $category);
+        }
+    
+        if (!is_null($title)) {
+            $query->where('title', 'LIKE', '%' . $title . '%');
+        }
+        $videos = $query->select('id','shorts_video', 'video' ,'title' ,'category')->get();
+    
+        if ($videos->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data not found',
+            ]);
+        }
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'All data retrieved successfully',
+            'data' => $videos,
+        ]);
+    }
+
+    
+    public function HomeVideo(Request $request)
+    {
+        $category = $request->input('category');
+        $title = $request->input('title');
+    
+        $query = Videos::query();
+    
+        if (!is_null($category)) {
+            $query->where('category', $category);
+        }
+    
+        if (!is_null($title)) {
+            $query->where('title', 'LIKE', '%' . $title . '%');
+        }
+        $videos = $query->select('id','shorts_video', 'video' ,'title' ,'category')->limit(16)->get();
+    
+        if ($videos->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data not found',
+            ]);
+        }
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'All data retrieved successfully',
+            'data' => $videos,
+        ]);
+    }
+
+
+
     
 
     public function Videos($id)
