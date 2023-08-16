@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\Add;
 use App\Models\User;
 use App\Models\Videos;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Mail\OtpVerificationMail;
 use Illuminate\Support\Facades\DB;
@@ -236,6 +238,45 @@ class AuthController extends Controller
         }
     }
 
+    public function addShow($id)
+    {
+        $Blog = Add::find($id);
+        if (is_null($Blog)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'data not found'
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $Blog,
+        ]);
+    }
 
+    public function addsGet()
+    {
+        $Cource = Add::latest()->get();
+        if (is_null($Cource)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'data not found',
+            ]);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'All Data susccessfull',
+            'data' => $Cource,
+        ]);
+    }
+
+
+    public function Contact(Request $req)
+    {
+        Mail::to('discoverpakistanhdtv@gmail.com')->send(new ContactMail($req->subject, $req->message, $req->name,$req->email,$req->contact_number));
+        return response()->json([
+            'success' => true,
+            'message' => 'Contact created successfully',
+        ],200);
+    }
 
     }

@@ -61,6 +61,11 @@
                 <a class="nav-link" href="{{ url('/Video') }}">
                     <i class="bi bi-chat-left-dots"></i>
                     <span>Videos </span></a>
+            </li>               
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/Add') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Adds </span></a>
             </li>
 
 

@@ -50,13 +50,26 @@
                 <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Category </label>
-                        <select id="category" name="category"  class="select2 form-control">
-                            <option>Choose One..</option>
-                            <option>tour</option>
-                            <option>test</option>
+                        <select id="category" name="category"  class="select2 form-control" required>
+                            <option value="">Select Category</option>
+                            <option>Popular Shows</option>
+                            <option>Documentaries</option>
+                            <option>Most Viewed</option>
+                            <option>Complete Archive</option>
+                            <option>Adventure Club</option>
+                            <option>Latest videos</option>
+                            <option>Discover Shorts</option>
+                            <option>Dekho Pakistan</option>
+                            <option>Paharon Ka Safar</option>
+                            <option>Food Street</option>
+                            <option>Hotels For You</option>
+                            <option>De-Bikers</option>
+                            <option>Travelogue of The Week</option>
+
                         </select>
                     </div>
-                </div>
+                </div>            
+
             </div>
             <button type="submit" class="btn btn-primary float-right export-btn btn-save-dis">Save</button>
         </form>

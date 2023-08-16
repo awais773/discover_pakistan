@@ -59,18 +59,24 @@ class AuthenticateController extends Controller
         $id = $request->user()->id;
         $obj = User::find($id);
         if ($obj) {
-            if ($image = $request->file('avatar')) {
-                $destinationPath = 'profileImage/';
-                $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-                $image->move($destinationPath, $profileImage);
-                $input['avatar'] = "$profileImage";
-                $obj->avatar = $profileImage;
+            if ($file = $request->file('avatar')) {
+                $image_name = md5(rand(1000, 10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name . '.' . $ext;
+                $upload_path = public_path('profileImage/');
+                $image_url = $upload_path . $image_full_name;
+                $file->move($upload_path, $image_full_name);
+                $image = 'profileImage/' . $image_full_name;
+                $obj->avatar = $image;
             }
             if (!empty($request->input('name'))) {
                 $obj->name = $request->input('name');
             }
             if (!empty($request->input('email'))) {
                 $obj->email = $request->input('email');
+            }
+            if (!empty($request->input('premium'))) {
+                $obj->premium = $request->input('premium');
             }
             if (!empty($request->input('password'))) {
                 $obj->password = Hash::make($request->input('password'));

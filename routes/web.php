@@ -48,6 +48,9 @@ Route::Resource('/Users', App\Http\Controllers\admin\UserController::class);
 
 Route::get('/Videocreate', [App\Http\Controllers\admin\VideoController::class, 'Videocreate']);
 Route::Resource('/Video', App\Http\Controllers\admin\VideoController::class);
+Route::Resource('/Adds ', App\Http\Controllers\admin\AddsController::class);
+Route::get('/addsCreate', [App\Http\Controllers\admin\AddsController::class, 'addsCreate']);
+Route::get('/Add', [App\Http\Controllers\admin\AddsController::class, 'index']);
 
 
 

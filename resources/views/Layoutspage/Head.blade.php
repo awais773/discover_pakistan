@@ -76,7 +76,7 @@ $.ajax({
         href="{{ asset('import/assets/https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css') }}"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-    <title>Game Dashboard</title>
+    <title>Discover Pakistan</title>
     <a
         href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></a>
         <a href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"></a>

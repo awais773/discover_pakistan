@@ -33,6 +33,11 @@ Route::post('shortsGet',[App\Http\Controllers\api\AuthController::class,'shortsG
 Route::get('Videos/{id}',[App\Http\Controllers\api\AuthController::class,'Videos']);
 Route::delete('videosDestroy/{id}',[App\Http\Controllers\api\AuthController::class,'videosDestroy']);
 
+Route::get('addsGet/{id}',[App\Http\Controllers\api\AuthController::class,'addShow']);
+Route::get('addsGet',[App\Http\Controllers\api\AuthController::class,'addsGet']);
+Route::post('contact',[App\Http\Controllers\api\AuthController::class,'Contact']);
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
