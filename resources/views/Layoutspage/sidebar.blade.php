@@ -80,6 +80,13 @@
                     <span>Category </span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/Job') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Jobs </span></a>
+            </li>
+
+
             {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('/topics') }}">
                     <i class="bi bi-chat-left-dots"></i>

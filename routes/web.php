@@ -76,6 +76,13 @@ Route::delete('/CategoryDestroy/{id}', [App\Http\Controllers\admin\CategoryContr
 
 
 
+Route::Resource('/Job', App\Http\Controllers\admin\JobController::class);
+Route::get('/JobCreate', [App\Http\Controllers\admin\JobController::class, 'create']);
+Route::post('/Jobstore', [App\Http\Controllers\admin\JobController::class, 'store']);
+Route::get('/Jobedit/{id}', [App\Http\Controllers\admin\JobController::class, 'edit']);
+Route::put('/JobUpdate/{id}', [App\Http\Controllers\admin\JobController::class, 'update']);
+Route::delete('/JobDestroy/{id}', [App\Http\Controllers\admin\JobController::class, 'destroy']);
+
 
 
 

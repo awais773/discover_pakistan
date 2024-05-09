@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Mail\CareerMail;
 use App\Models\Category;
+use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -680,6 +681,24 @@ public function login(Request $request)
         public function Category()
         {
             $blogs = Category::latest()->get();
+            if ($blogs->isEmpty()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data not found'
+                ], 404);
+            }
+        
+            return response()->json([
+                'success' => true,
+                'data' => $blogs,
+            ]);
+        }
+
+
+
+        public function Job()
+        {
+            $blogs = Job::latest()->get();
             if ($blogs->isEmpty()) {
                 return response()->json([
                     'success' => false,

@@ -55,6 +55,7 @@ Route::get('Category',[App\Http\Controllers\api\AuthController::class,'Category'
 
 // email/
 Route::post('email',[App\Http\Controllers\api\AuthController::class,'email']);
+Route::get('Jobs',[App\Http\Controllers\api\AuthController::class,'Job']);
 
 
 

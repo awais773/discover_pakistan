@@ -18,30 +18,29 @@
             </div>
         @endif
         <!-- Page Heading -->
-        <h1 class="h2 mb-4 text-gray-800">Add Category</h1>
-        <form action="{{ url('CategoryUpdate/' . $category->id) }}" method="POST" enctype="multipart/form-data">
-            @method('PUT')
+        <h1 class="h2 mb-4 text-gray-800">Add Job</h1>
+        <form action="{{ url('Jobstore') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <br>
             <div class="row">
                 <div class="col-sm">
                     <div class="form-group">
-                        <label class="h4 mb-2 text-gray-800" for="image">Category</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ $category->name }}"
-                            placeholder="name enter" required>
+                        <label class="h4 mb-2 text-gray-800" for="image">Title</label>
+                        <input type="text" class="form-control" id="title" name="title"
+                            placeholder="Title Enter" required>
                     </div>
                 </div>
                 <div class="col-sm">
-                    <label class="h4 mb-2 text-gray-800" for="icon">Icon</label>
-                    <input type="file" class="form-control" id="icon" name="icon" placeholder="icon" required>
-                    <span class="text-danger">Max Icon Size 500px</span>
-                
-                    @if(isset($category->icon))
-                        <div class="mt-2">
-                            {{-- <label for="oldIcon" class="h6 mb-2 text-gray-800">Old Icon</label><br> --}}
-                            <img src="{{ asset('/' . $category->icon) }}" alt="Old Icon" style="max-width: 200px;">
+                    <div class="form-group">
+                        <label class="h4 mb-2 text-gray-800" for="time">Time</label>
+                        <div class="input-group">
+                            <input type="time" class="form-control" id="time" name="time" required>
+                            <select class="form-control" id="time_period" name="time_period">
+                                <option value="AM">AM</option>
+                                <option value="PM">PM</option>
+                            </select>
                         </div>
-                    @endif
+                    </div>
                 </div>
                 <div class="col-sm">
                 </div>
@@ -65,7 +64,7 @@
 
 <script>
     function toggleImageField() {
-        var category = document.getElementById('category');
+        var Job = document.getElementById('category');
         var imageField = document.getElementById('imageField');
 
         if (category.value === 'Details') {
