@@ -34,12 +34,27 @@ Route::get('Videos/{id}',[App\Http\Controllers\api\AuthController::class,'Videos
 Route::delete('videosDestroy/{id}',[App\Http\Controllers\api\AuthController::class,'videosDestroy']);
 
 Route::get('addsGet/{id}',[App\Http\Controllers\api\AuthController::class,'addShow']);
-Route::get('addsGet',[App\Http\Controllers\api\AuthController::class,'addsGet']);
-Route::post('contact',[App\Http\Controllers\api\AuthController::class,'Contact']);
+Route::post('addsGet',[App\Http\Controllers\api\AuthController::class,'addsGet']);
+Route::get('bannerTaxt',[App\Http\Controllers\api\AuthController::class,'bannerTaxt']);
+Route::get('SliderImage',[App\Http\Controllers\api\AuthController::class,'SliderImage']);
+Route::get('DiscoverShowSlider',[App\Http\Controllers\api\AuthController::class,'DiscoverShowSlider']);
+Route::get('DiscoverShowImages',[App\Http\Controllers\api\AuthController::class,'DiscoverShowImages']);
+
+
+
+Route::post('joinUs',[App\Http\Controllers\api\AuthController::class,'Contact']);
+Route::post('Adverstise',[App\Http\Controllers\api\AuthController::class,'Adverstise']);
+
+
 
 Route::get('homeVideo',[App\Http\Controllers\api\AuthController::class,'HomeVideo']);
-Route::get('allVideo',[App\Http\Controllers\api\AuthController::class,'allVideo']);
+Route::post('search',[App\Http\Controllers\api\AuthController::class,'allVideo']);
+Route::post('payment',[App\Http\Controllers\api\AuthController::class,'stripePost']);
 
+Route::get('Category',[App\Http\Controllers\api\AuthController::class,'Category']);
+
+// email/
+Route::post('email',[App\Http\Controllers\api\AuthController::class,'email']);
 
 
 
@@ -51,8 +66,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->group(function () {
     Route::post('/update/profile', [App\Http\Controllers\api\AuthenticateController::class, 'updateProfile']);
     Route::post('PasswordChanged',[App\Http\Controllers\api\AuthController::class,'PasswordChanged']);
-
-
+    Route::post('checkPayment',[App\Http\Controllers\api\AuthController::class,'checkPayment']);
 
 });
 

@@ -68,6 +68,24 @@
                     <span>Adds </span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/home') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Slider </span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/category') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Category </span></a>
+            </li>
+
+            {{-- <li class="nav-item">
+                <a class="nav-link" href="{{ url('/topics') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Add Topics </span></a>
+            </li> --}}
+
 
 
 

@@ -47,7 +47,7 @@
                         {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
                     </div>
                 </div>
-                <div class="col-sm">
+                {{-- <div class="col-sm">
                     <div class="form-group">
                         <label class="h4 mb-2 text-gray-800" for="">Category </label>
                         <select id="category" name="category"  class="select2 form-control" required>
@@ -61,14 +61,46 @@
                             <option>Discover Shorts</option>
                             <option>Dekho Pakistan</option>
                             <option>Paharon Ka Safar</option>
-                            <option>Food Street</option>
+                            <option>Street Food</option>
                             <option>Hotels For You</option>
-                            <option>De-Bikers</option>
+                            <option>De Bikers</option>
                             <option>Travelogue of The Week</option>
-
+                             <option>DOCUMENTARIES</option>
+                            <option>NATURE</option>
+                            <option>ANIMALS</option>
+                            <option>AUTOMOBILES</option>
+                            <option>Trending Now</option>
+                            <option>Our Top Programs</option>
+                            <option>Discover Pakistan With Veena Malik</option>
                         </select>
                     </div>
-                </div>            
+                </div>             --}}
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label class="h4 mb-2 text-gray-800" for="category">Category</label>
+                        <select id="category" name="category" class="select2 form-control" required>
+                            <option value="">Select Category</option>
+                            @foreach($Category as $category)
+                            <option>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label class="h4 mb-2 text-gray-800" for="title">Description </label>
+                        <input type="text" class="form-control" id="description" name="description" placeholder="discreption enter" required>
+                        {{-- <small id="emailHelp" class="form-text text-muted"></small> --}}
+                    </div>
+                </div>
+
+                <div class="col-sm">
+                </div>
+                <div class="col-sm">
+                </div>           
 
             </div>
             <button type="submit" class="btn btn-primary float-right export-btn btn-save-dis">Save</button>

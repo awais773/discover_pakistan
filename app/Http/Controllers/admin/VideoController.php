@@ -6,6 +6,7 @@ use App\Models\Api\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Videos;
 use App\Models\Withdraw;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,8 @@ class VideoController extends Controller
 
     public function Videocreate()
     {
-        return view('admin.main.addVideo');
+        $Category = Category::latest()->get();
+        return view('admin.main.addVideo',compact('Category'));
     }
 
 
@@ -35,6 +37,8 @@ class VideoController extends Controller
         $Videos->shorts_video = $req->shorts_video;
         $Videos->video = $req->video;
         $Videos->category = $req->category;
+        $Videos->type = $req->type;
+        $Videos->description = $req->description;
         $Videos->save();
         return redirect()->back()->with('message','Videos Create Sucessfull');
     }

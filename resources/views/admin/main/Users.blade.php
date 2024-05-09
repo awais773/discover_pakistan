@@ -37,6 +37,9 @@
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
                                                 style="width: 131.172px;">Premimum</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 131.172px;">Amount</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1"
                                                 aria-label="Start date: activate to sort column ascending"
                                                 style="width: 131.172px;">Action</th>
@@ -47,8 +50,9 @@
                                         <tr class="even">
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td>{{$user->email  }}</td>
-                                            <td>{{$user->premium  }}</td>
+                                            <td>{{$user->email }}</td>
+                                            <td>{{$user->premium }}</td>
+                                            <td>{{$user->amount }}</td>
                                             <td style="display: flex">
                                                 {{-- <div style="  margin-right: 10px">    
                                                 <a class="btn btn-success" href="{{ url('/User',$user->id) }}"> <i class="fas fa-edit"></i></a>
