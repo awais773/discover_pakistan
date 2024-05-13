@@ -376,7 +376,7 @@ public function login(Request $request)
         if (!is_null($category)) {
             $query->where('category', $category);
         }
-        $videos = $query->select('id','category', 'image')->get();
+        $videos = $query->select('id','category', 'image', 'mobile_image')->get();
     
         if ($videos->isEmpty()) {
             return response()->json([

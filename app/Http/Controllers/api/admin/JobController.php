@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Add;
-use App\Models\Contact;
 use App\Models\Job;
 use Illuminate\Support\Facades\Validator;
 
@@ -69,11 +68,5 @@ class JobController extends Controller
     }
 
 
-
-    public function contact()
-    {
-        $Withdraw = Contact::latest()->get();
-        return view('admin.main.listContact',compact('Withdraw'));
-    }
 
 }

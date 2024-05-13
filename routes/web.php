@@ -33,6 +33,7 @@ Route::get('/change-password', [App\Http\Controllers\admin\EmailInvitationContro
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/dashboard', [App\Http\Controllers\admin\CategoryController::class, 'index']);
+Route::get('/leaderboardlist', [App\Http\Controllers\admin\LeaderBoardController::class, 'index']);
 
 
 
@@ -52,6 +53,7 @@ Route::get('/addsCreate', [App\Http\Controllers\admin\AddsController::class, 'ad
 Route::get('/Add', [App\Http\Controllers\admin\AddsController::class, 'index']);
 Route::post('/DiscoverShowsStore', [App\Http\Controllers\admin\AddsController::class, 'store']);
 
+
 Route::get('AddEdit/{id}', [App\Http\Controllers\admin\AddsController::class, 'edit']);
 Route::put('Addupdate/{id}', [App\Http\Controllers\admin\AddsController::class, 'update']);
 Route::delete('Adddelete/{id}', [App\Http\Controllers\admin\AddsController::class, 'destroy']);
@@ -62,9 +64,6 @@ Route::post('/SliderStore', [App\Http\Controllers\admin\HomeController::class, '
 Route::get('/banerTax/{id}', [App\Http\Controllers\admin\HomeController::class, 'edit']);
 
 
-Route::get('/topics', [App\Http\Controllers\admin\TopicController::class, 'index']);
-Route::post('/TopicStore', [App\Http\Controllers\admin\TopicController::class, 'store']);
-Route::get('/TopicCreate', [App\Http\Controllers\admin\TopicController::class, 'Create']);
 
 
 Route::Resource('/category', App\Http\Controllers\admin\CategoryController::class);
@@ -75,13 +74,15 @@ Route::put('/CategoryUpdate/{id}', [App\Http\Controllers\admin\CategoryControlle
 Route::delete('/CategoryDestroy/{id}', [App\Http\Controllers\admin\CategoryController::class, 'destroy']);
 
 
-
 Route::Resource('/Job', App\Http\Controllers\admin\JobController::class);
 Route::get('/JobCreate', [App\Http\Controllers\admin\JobController::class, 'create']);
 Route::post('/Jobstore', [App\Http\Controllers\admin\JobController::class, 'store']);
 Route::get('/Jobedit/{id}', [App\Http\Controllers\admin\JobController::class, 'edit']);
 Route::put('/JobUpdate/{id}', [App\Http\Controllers\admin\JobController::class, 'update']);
 Route::delete('/JobDestroy/{id}', [App\Http\Controllers\admin\JobController::class, 'destroy']);
+
+
+Route::get('/contact', [App\Http\Controllers\admin\JobController::class, 'contact']);
 
 
 

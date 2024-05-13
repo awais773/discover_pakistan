@@ -87,6 +87,13 @@
             </li>
 
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('/contact') }}">
+                    <i class="bi bi-chat-left-dots"></i>
+                    <span>Adventure Request</span></a>
+            </li>
+
+
             {{-- <li class="nav-item">
                 <a class="nav-link" href="{{ url('/topics') }}">
                     <i class="bi bi-chat-left-dots"></i>
